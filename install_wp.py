@@ -27,6 +27,10 @@ db_user = raw_input("> ")
 print "Enter user's password: "
 db_pass = raw_input("> ")
 
+# Save url from github repo for startertheme download
+print "Enter Github URL for theme repository: "
+repo = raw_input("> ") 
+
 # create database with MySQL query
 create_db = "CREATE DATABASE IF NOT EXISTS %s" % db_name
 cursor.execute(create_db)
@@ -76,7 +80,7 @@ os.system('mv '+dest_folder+'/wordpress/* '+dest_folder+'/.')
 os.system('rm -r -f '+dest_folder+'/wordpress')
 
 # Git Install SASSnasty starter theme
-os.system('git clone git@bitbucket.org:buildcreatestudios/sassnasty.git ' +dest_folder+'/wp-content/themes/'+folder+'')
+os.system('git clone ' + repo + ' ' + dest_folder+'/wp-content/themes/'+folder+'')
 
 # Open up stock WP Config Sample file
 wpconfig = open(dest_folder+'/wp-config-sample.php')
